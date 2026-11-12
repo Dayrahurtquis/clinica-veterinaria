@@ -1,0 +1,370 @@
+/* =========================================
+   1. VARIABLES Y CONFIGURACIÓN GLOBAL
+   ========================================= */
+:root {
+  --ink: #14302c;
+  --ink2: #1f4a43;
+  --paper: #f5f8f6;
+  --card: #fff;
+  --line: #d9e5df;
+  --teal: #1f8a5f;
+  --teal-d: #166a48;
+  --sun: #f0913a;
+  --red: #b3402f;
+  --text: #1a2622;
+  --mute: #62746d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font: 15px/1.5 "IBM Plex Sans", system-ui, sans-serif;
+  color: var(--text);
+  background-color: var(--paper);
+  background-image: 
+    radial-gradient(at 15% 10%, rgba(31, 138, 95, 0.09) 0px, transparent 50%),
+    radial-gradient(at 92% 88%, rgba(240, 145, 58, 0.09) 0px, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%231f8a5f' fill-opacity='0.05'%3E%3Ccircle cx='18' cy='18' r='2.5'/%3E%3Ccircle cx='25' cy='14' r='2.5'/%3E%3Ccircle cx='33' cy='16' r='2.5'/%3E%3Ccircle cx='38' cy='22' r='2.5'/%3E%3Cellipse cx='27' cy='26' rx='6' ry='5'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* =========================================
+   2. BARRA LATERAL Y NAVEGACIÓN
+   ========================================= */
+aside {
+  width: 230px;
+  background: var(--ink);
+  color: #dbeee5;
+  padding: 22px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.brand {
+  font-size: 21px;
+  font-weight: 700;
+  color: #fff;
+  padding: 0 10px 18px;
+  line-height: 1.15;
+}
+
+.brand small {
+  display: block;
+  font: 400 12px "IBM Plex Sans";
+  color: #93bfae;
+  margin-top: 4px;
+}
+
+.nav {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #dbeee5;
+}
+
+.nav:hover {
+  background: var(--ink2);
+}
+
+.nav:focus-visible {
+  outline: 2px solid var(--sun);
+}
+
+.nav.on {
+  background: var(--teal);
+  color: #fff;
+}
+
+.nav span {
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.16);
+  padding: 1px 8px;
+  border-radius: 99px;
+}
+
+.nav.cta {
+  margin-top: auto;
+  background: var(--sun);
+  color: var(--ink);
+  font-weight: 500;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.nav.cta:hover {
+  background: #f5a85a;
+}
+
+/* =========================================
+   3. CONTENIDO PRINCIPAL Y CABECERA
+   ========================================= */
+main {
+  flex: 1;
+  padding: 28px 32px;
+  min-width: 0;
+}
+
+.top {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  flex: 1;
+  min-width: 160px;
+}
+
+/* =========================================
+   4. FORMULARIOS Y BOTONES
+   ========================================= */
+input,
+select,
+textarea {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+  width: 100%;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid var(--teal);
+  border-color: transparent;
+}
+
+.search {
+  width: 240px;
+}
+
+button.b {
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 16px;
+  background: var(--teal);
+  color: #fff;
+}
+
+button.b:hover {
+  background: var(--teal-d);
+}
+
+button.b:focus-visible {
+  outline: 2px solid var(--sun);
+  outline-offset: 2px;
+}
+
+button.g {
+  background: transparent;
+  color: var(--teal-d);
+  padding: 4px 8px;
+}
+
+button.g:hover {
+  background: #e0f1e8;
+}
+
+button.g.d {
+  color: var(--red);
+}
+
+button.g.d:hover {
+  background: #f7e4e0;
+}
+
+/* =========================================
+   5. TABLAS Y ETIQUETAS (TAGS)
+   ========================================= */
+
+.wrap {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 10px 28px -8px rgba(20, 48, 44, 0.08);
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+td.l {
+  white-space: normal;
+  max-width: 280px;
+}
+
+th {
+  font-weight: 500;
+  color: var(--mute);
+  font-size: 13px;
+  background: #eef4f1;
+}
+
+tr:last-child td {
+  border-bottom: 0;
+}
+
+td.act {
+  text-align: right;
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 99px;
+  font-size: 13px;
+  background: #e6efea;
+}
+
+.tag.Confirmada {
+  background: #d8efe3;
+  color: #17623d;
+}
+
+.tag.Pendiente {
+  background: #fbecc9;
+  color: #7a5309;
+}
+
+.tag.Cancelada {
+  background: #f7dcd7;
+  color: #8c2f20;
+}
+
+.tag.Atendida {
+  background: #d9e6f7;
+  color: #1e4a82;
+}
+
+.empty {
+  padding: 36px;
+  text-align: center;
+  color: var(--mute);
+}
+
+/* =========================================
+   6. MODALES, ALERTAS Y NOTIFICACIONES
+   ========================================= */
+dialog {
+  border: 0;
+  border-radius: 12px;
+  padding: 0;
+  width: min(480px, 94vw);
+  box-shadow: 0 20px 60px rgba(20, 48, 44, 0.35);
+}
+
+dialog::backdrop {
+  background: rgba(20, 48, 44, 0.55);
+}
+
+form {
+  padding: 22px;
+}
+
+form h2 {
+  margin: 0 0 14px;
+  font-size: 21px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  color: var(--mute);
+  margin: 10px 0 4px;
+}
+
+.row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+#toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  display: none;
+  max-width: 90vw;
+  z-index: 9;
+}
+
+#toast.err {
+  background: var(--red);
+}
+
+#setup {
+  background: #fff4dc;
+  border: 1px solid var(--sun);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  display: none;
+}
+
+/* =========================================
+   7. DISEÑO RESPONSIVO (MÓVILES / TABLETS)
+   ========================================= */
+@media (max-width: 760px) {
+  body {
+    flex-direction: column;
+  }
+
+  aside {
+  /* ...mantén tus propiedades actuales y reemplaza background por: */
+  background: linear-gradient(180deg, var(--ink) 0%, #0f2522 100%);
+  box-shadow: 4px 0 20px rgba(20, 48, 44, 0.12);
+}
+
+  .brand {
+    width: 100%;
+    padding-bottom: 6px;
+  }
+
+  main {
+    padding: 18px 14px;
+  }
+
+  .search {
+    width: 100%;
+  }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agenda la cita de tu mascota – Patitas</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<link rel="stylesheet" href="css/agendar.css">
+</head>
+<body>
+<header class="bar">
+  <a class="logo" href="agendar.html">Patitas</a>
+  <a class="adm" href="index.html">Panel de administración</a>
+</header>
+
+<main class="page">
+  <div class="intro">
+    <h1>Agenda la cita de tu mascota</h1>
+    <p>Selecciona el propietario, su mascota y el servicio registrado. Tu cita quedará pendiente hasta que la clínica la confirme.</p>
+  </div>
+
+  <div id="setup" class="alert" hidden>Falta conectar la base de datos: edita <b>js/config.js</b>.</div>
+  <div id="msg" class="alert err" role="alert" hidden></div>
+
+  <div class="grid" id="main-grid">
+    <form id="frm">
+      <fieldset>
+        <legend>Paciente registrado</legend>
+        <label for="propietario">Propietario *</label>
+        <select id="propietario" required>
+          <option value="">Cargando propietarios…</option>
+        </select>
+
+        <label for="mascota">Mascota *</label>
+        <select id="mascota" required disabled>
+          <option value="">Primero elige un propietario</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>Tu cita</legend>
+        <label for="tipo">Tipo de servicio *</label>
+        <select id="tipo" required><option value="">Cargando servicios…</option></select>
+        
+        <label for="servicio">Servicio *</label>
+        <select id="servicio" required disabled><option value="">Primero elige un tipo de servicio</option></select>
+        
+        <div class="two">
+          <div><label for="fecha">Fecha *</label><input id="fecha" type="date" required></div>
+          <div><label for="hora">Hora *</label><select id="hora" required></select></div>
+        </div>
+        
+        <label for="motivo">Motivo de la visita</label>
+        <textarea id="motivo" rows="2" placeholder="Ej.: tiene tos desde hace dos días"></textarea>
+      </fieldset>
+
+      <button class="btn" id="send" type="submit">Agendar cita</button>
+    </form>
+
+    <aside class="ticket" aria-live="polite">
+      <div class="t-top">
+        <span class="t-lbl">Tu cita</span>
+        <div id="t-serv" class="t-dest">Elige un servicio</div>
+        <div id="t-desc" class="t-desc">Aquí verás el resumen de la cita.</div>
+      </div>
+      <div class="t-cut"></div>
+      <div class="t-bot">
+        <div><span class="t-lbl">Mascota</span><div id="t-masc">—</div></div>
+        <div><span class="t-lbl">Fecha y hora</span><div id="t-fh">—</div></div>
+        <div class="t-row">
+          <div><span class="t-lbl">Duración</span><div id="t-dur">—</div></div>
+          <div><span class="t-lbl">Precio</span><div id="t-pre" class="t-pre">—</div></div>
+        </div>
+        <div><span class="t-lbl">Estado</span><div><span class="pill">Pendiente</span></div></div>
+      </div>
+    </aside>
+  </div>
+
+  <section id="ok" class="done" hidden>
+    <h2>¡Cita registrada!</h2>
+    <p>Tu número de cita es <b id="ok-id"></b>. Está en estado <span class="pill">Pendiente</span> hasta que la clínica la confirme.</p>
+    <button class="btn" id="again" type="button">Agendar otra cita</button>
+  </section>
+</main>
+
+<script src="js/config.js"></script>
+<script src="js/agendar.js"></script>
+</body>
+</html>
